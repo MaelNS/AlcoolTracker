@@ -11,14 +11,14 @@ struct ListPartyView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Party.date, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Party.date, ascending: false)],
         animation: .default)
     private var partys: FetchedResults<Party>
     
     var body: some View {
         List {
             ForEach(partys) { party in
-                NavigationLink(destination: DetailPartyView(party: party)) {
+                NavigationLink(destination: DetailPartyView(date: party.date!)) {
                     Text("\(party.date ?? Date())")
                 }
             }
@@ -38,11 +38,5 @@ struct ListPartyView: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
-    }
-}
-
-struct DataPartyView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListPartyView()
     }
 }

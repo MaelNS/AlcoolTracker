@@ -91,10 +91,32 @@ struct PartyRunningView: View {
     ]
     
     var body: some View {
-        ZStack {
-//            RoundedRectangle(cornerRadius: 20, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-//                .foregroundColor(Color(.secondarySystemBackground))
-//                .frame(height: 300)
+        VStack {
+            VStack {
+                HStack {
+                    Text("Données")
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding(.top)
+                .padding(.horizontal)
+                HStack {
+                    Text("Nombre de verre : \(partys.last!.drink!.count)")
+                    Spacer()
+                }
+                .padding(.horizontal)
+                HStack {
+                    Text("Taux d'alcoolémie : \(calcAlcoolAmount()) g/L")
+                    Spacer()
+                }
+                .padding(.horizontal)
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 20, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(Color(.secondarySystemBackground))
+            )
+            .padding()
+            
             VStack {
                 HStack {
                     Text("Je me serre :")
@@ -123,8 +145,14 @@ struct PartyRunningView: View {
                 RoundedRectangle(cornerRadius: 20, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                     .foregroundColor(Color(.secondarySystemBackground))
             )
+            .padding()
+            
+            Button(action: { }) {
+                Text("Fin soirée")
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(Color(.secondarySystemBackground)))
+            }
         }
-        .padding()
     }
     
     func addNewDrink(drink: drinkType, date: Date) {
@@ -142,6 +170,15 @@ struct PartyRunningView: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+    
+    func calcAlcoolAmount() -> Int {
+        var totalAmount = 0
+        for drink in partys.last!.drink!.allObjects as! [Drink] {
+            totalAmount += Int(drink.amountOl)
+        }
+        
+        return totalAmount
     }
 }
 
