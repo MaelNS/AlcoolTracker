@@ -14,8 +14,10 @@
 		7A77F60725A378AE00AD6815 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77F60625A378AE00AD6815 /* Persistence.swift */; };
 		7A77F60A25A378AE00AD6815 /* AlcoolTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A77F60825A378AE00AD6815 /* AlcoolTracker.xcdatamodeld */; };
 		7A77F62225A39CD900AD6815 /* CurrentParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77F62125A39CD900AD6815 /* CurrentParty.swift */; };
-		7AE860FF25A4AE22001AC3AF /* NewDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE860FE25A4AE22001AC3AF /* NewDrinkView.swift */; };
 		7AE8610225A4B243001AC3AF /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610125A4B243001AC3AF /* DrinkModel.swift */; };
+		7AE8610925A4BAE7001AC3AF /* profilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610825A4BAE7001AC3AF /* profilView.swift */; };
+		7AE8610D25A4BC97001AC3AF /* ListPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610C25A4BC97001AC3AF /* ListPartyView.swift */; };
+		7AE8611025A4BEF7001AC3AF /* DetailPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610F25A4BEF7001AC3AF /* DetailPartyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +30,10 @@
 		7A77F60925A378AE00AD6815 /* AlcoolTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlcoolTracker.xcdatamodel; sourceTree = "<group>"; };
 		7A77F60B25A378AE00AD6815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A77F62125A39CD900AD6815 /* CurrentParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentParty.swift; sourceTree = "<group>"; };
-		7AE860FE25A4AE22001AC3AF /* NewDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDrinkView.swift; sourceTree = "<group>"; };
 		7AE8610125A4B243001AC3AF /* DrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkModel.swift; sourceTree = "<group>"; };
+		7AE8610825A4BAE7001AC3AF /* profilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilView.swift; sourceTree = "<group>"; };
+		7AE8610C25A4BC97001AC3AF /* ListPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPartyView.swift; sourceTree = "<group>"; };
+		7AE8610F25A4BEF7001AC3AF /* DetailPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPartyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +91,9 @@
 			children = (
 				7A77F5FF25A378AE00AD6815 /* ContentView.swift */,
 				7A77F62125A39CD900AD6815 /* CurrentParty.swift */,
-				7AE860FE25A4AE22001AC3AF /* NewDrinkView.swift */,
+				7AE8610825A4BAE7001AC3AF /* profilView.swift */,
+				7AE8610C25A4BC97001AC3AF /* ListPartyView.swift */,
+				7AE8610F25A4BEF7001AC3AF /* DetailPartyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,11 +177,13 @@
 			files = (
 				7AE8610225A4B243001AC3AF /* DrinkModel.swift in Sources */,
 				7A77F60A25A378AE00AD6815 /* AlcoolTracker.xcdatamodeld in Sources */,
+				7AE8610925A4BAE7001AC3AF /* profilView.swift in Sources */,
 				7A77F62225A39CD900AD6815 /* CurrentParty.swift in Sources */,
 				7A77F60725A378AE00AD6815 /* Persistence.swift in Sources */,
 				7A77F60025A378AE00AD6815 /* ContentView.swift in Sources */,
-				7AE860FF25A4AE22001AC3AF /* NewDrinkView.swift in Sources */,
 				7A77F5FE25A378AE00AD6815 /* AlcoolTrackerApp.swift in Sources */,
+				7AE8611025A4BEF7001AC3AF /* DetailPartyView.swift in Sources */,
+				7AE8610D25A4BC97001AC3AF /* ListPartyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,12 @@
 import Foundation
 
 class drinkType {
-    var name: String
-    var percentOl: Int // %
-    var quantity: Int // mL
+    let id = UUID()
+    let name: String
+    let percentOl: Int // %
+    let quantity: Int // mL
     
-    var amountOl: Int
+    let amountOl: Int
     
     init(name: String, percentOl: Int, quantity: Int) {
         self.name = name
