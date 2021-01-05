@@ -106,10 +106,16 @@ struct PartyRunningView: View {
                 }
                 .padding(.horizontal)
                 HStack {
-                    Text("Taux d'alcoolémie : \(calcAlcoolAmount()) g/L")
+                    Text("Volume alcool pur bu : \(calcAlcoolAmount()) g")
                     Spacer()
                 }
                 .padding(.horizontal)
+                HStack {
+                    Text("Taux d'alcoolémie : \(calcBloodAlcool()) g/L")
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.bottom)
             }
             .background(
                 RoundedRectangle(cornerRadius: 20, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
@@ -179,6 +185,14 @@ struct PartyRunningView: View {
         }
         
         return totalAmount
+    }
+    
+    func calcBloodAlcool() -> String {
+        var bloodAlcool: Double = 0
+        bloodAlcool = Double(calcAlcoolAmount()) / (0.7 * 57)
+        
+        let stringBloodAlcool = String(format: "%.1f", bloodAlcool)
+        return stringBloodAlcool
     }
 }
 

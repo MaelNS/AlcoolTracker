@@ -19,7 +19,7 @@ class drinkType {
         self.name = name
         self.percentOl = percentOl
         self.quantity = quantity
-        self.amountOl = Int(Double(percentOl * quantity / 100) * 0.8) // g
+        self.amountOl = Int( (Double(percentOl) / 100) * Double(quantity) * 0.8) // g
     }
 }
 
