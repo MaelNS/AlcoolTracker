@@ -22,7 +22,7 @@ struct CurrentParty: View {
     init(allPartys: FetchedResults<Party>) {
         if let lastParty = allPartys.last {
             if lastParty.dateFin == nil {
-                partyRunning = true
+                _partyRunning = State<Bool>(initialValue: true)
             }
         }
     }
@@ -37,12 +37,13 @@ struct CurrentParty: View {
                             partyRunning = true
                         }
                     }) {
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .foregroundColor(Color(.secondarySystemBackground))
                             .frame(height: 60)
                             .overlay(
                                 HStack {
                                     Text("Nouvelle soirée")
+                                        .font(.system(.body, design: .rounded))
                                     Spacer()
                                 }
                                 .padding()
@@ -67,6 +68,7 @@ struct CurrentParty: View {
                 trailing:
                 Button(action: { action = 1 }) {
                     Text("Liste")
+                        .font(.system(.body, design: .rounded))
                 }
             )
         }
@@ -96,6 +98,9 @@ struct PartyRunningView: View {
     private var partys: FetchedResults<Party>
     
     @Binding var partyRunning: Bool
+    @State var selectedDrink: drinkType? = nil
+    
+    @State var showNewDrinkView: Bool = false
     
     let columns = [
         GridItem(.flexible()),
@@ -104,79 +109,163 @@ struct PartyRunningView: View {
     
     var body: some View {
         VStack {
-            VStack {
-                HStack {
-                    Text("Données")
-                        .font(.headline)
-                    Spacer()
-                }
-                .padding(.top)
-                .padding(.horizontal)
-                HStack {
-                    Text("Nombre de verre : \(partys.last!.drink!.count)")
-                    Spacer()
-                }
-                .padding(.horizontal)
-                HStack {
-                    Text("Volume alcool pur bu : \(calcAlcoolAmount()) g")
-                    Spacer()
-                }
-                .padding(.horizontal)
-                HStack {
-                    Text("Taux d'alcoolémie : \(calcBloodAlcool()) g/L")
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.bottom)
+            HStack {
+                Text("Données")
+                    .font(.system(.title2, design: .rounded))
+                    .fontWeight(.bold)
+                Spacer()
             }
+            .padding(.top, 8)
+            
+            VStack(spacing: 4) {
+                HStack{
+                    Image(systemName: "drop.fill")
+                        .foregroundColor(Color(.systemIndigo))
+                    Text("Consommation")
+                        .fontWeight(.bold)
+                        .font(.system(.body, design: .rounded))
+                        .foregroundColor(Color(.systemIndigo))
+                        Spacer()
+                }
+                .padding(.bottom, 8)
+                HStack {
+                    Text("\(partys.last!.drink!.count)")
+                        .font(.system(.title2, design: .rounded))
+                        .fontWeight(.bold)
+                    Text("verres bus")
+                        .font(.system(.body, design: .rounded))
+                        .foregroundColor(Color(.secondaryLabel))
+                        .fontWeight(.semibold)
+                    Spacer()
+                }
+                HStack {
+                    Text("\(calcAlcoolAmount())")
+                        .font(.system(.title2, design: .rounded))
+                        .fontWeight(.bold)
+                    Text("g d'alcool pur ingéré")
+                        .font(.system(.body, design: .rounded))
+                        .foregroundColor(Color(.secondaryLabel))
+                        .fontWeight(.semibold)
+                    Spacer()
+                }
+            }
+            .padding()
             .background(
-                RoundedRectangle(cornerRadius: 20, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                RoundedRectangle(cornerRadius: 12, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                     .foregroundColor(Color(.secondarySystemBackground))
             )
-            .padding()
             
             VStack {
+                HStack{
+                    Image(systemName: "cross.fill")
+                        .foregroundColor(Color(.systemTeal))
+                    Text("Taux d'alcoolémie")
+                        .font(.system(.body, design: .rounded))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(.systemTeal))
+                        Spacer()
+                }
+                .padding(.bottom, 8)
                 HStack {
-                    Text("Je me serre :")
-                        .font(.headline)
+                    Text("\(calcBloodAlcool())")
+                        .font(.system(.title2, design: .rounded))
+                        .fontWeight(.bold)
+                    Text("g/L")
+                        .font(.system(.body, design: .rounded))
+                        .foregroundColor(Color(.secondaryLabel))
+                        .fontWeight(.semibold)
                     Spacer()
                 }
-                .padding(.top)
+            }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 12, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(Color(.secondarySystemBackground))
+            )
+            
+            VStack {
+                HStack{
+                    Image(systemName: "clock.fill")
+                        .foregroundColor(Color(.systemPink))
+                    Text("Evolution")
+                        .font(.system(.body, design: .rounded))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(.systemPink))
+                        Spacer()
+                }
+                .padding(.bottom, 8)
                 .padding(.horizontal)
-                
-                LazyVGrid(columns: columns) {
-                    ForEach(drinks, id: \.id) { drink in
-                        Button(action: {
-                            addNewDrink(drink: drink, date: Date())
-                        }) {
-                            Text(drink.name)
-                                .padding()
-                                .background(RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .foregroundColor(Color(.tertiarySystemBackground)))
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(partys.last!.drink!.allObjects as! [Drink]) { drink in
+                            VStack {
+                                Text(sensationConvert[drink.sensation!]!)
+                                Text(drink.sensation!)
+                                Text(drink.name!)
+                                Text("\(drink.date!, formatter: itemFormatter)")
+                            }
                         }
                     }
+                    .padding(.leading)
                 }
-                .padding(.bottom)
-                .padding(.horizontal)
             }
+            .padding(.vertical)
             .background(
-                RoundedRectangle(cornerRadius: 20, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                RoundedRectangle(cornerRadius: 12, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                     .foregroundColor(Color(.secondarySystemBackground))
             )
-            .padding()
             
-            Button(action: {
-                endParty(date: Date())
-                withAnimation() {
-                    partyRunning = false
-                }
-            }) {
-                Text("Fin soirée")
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(Color(.secondarySystemBackground)))
+            HStack {
+                Text("Consommation")
+                    .font(.system(.title2, design: .rounded))
+                    .fontWeight(.bold)
+                Spacer()
             }
-            .padding(.bottom)
+            .padding(.top, 8)
         }
+        .padding(.horizontal)
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(drinks, id: \.id) { drink in
+                    Button(action: {
+//                        addNewDrink(drink: drink, date: Date())
+                        showNewDrinkView = true
+                        selectedDrink = drink
+                    }) {
+                        VStack {
+                            Text(drink.name)
+                                .font(.system(.body, design: .rounded))
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color(.label))
+                            Text("\(drink.amountOl)g alcool")
+                                .font(.system(.callout, design: .rounded))
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color(.secondaryLabel))
+                        }
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .foregroundColor(Color(.secondarySystemBackground)))
+                    }
+                    .sheet(isPresented: $showNewDrinkView) {
+                        NewDrinkView(showNewDrinkView: self.$showNewDrinkView, selectedDrink: self.$selectedDrink)
+                    }
+                }
+            }
+            .padding(.leading)
+        }
+        
+        Button(action: {
+            endParty(date: Date())
+            withAnimation() {
+                partyRunning = false
+            }
+        }) {
+            Text("Fin soirée")
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous).foregroundColor(Color(.secondarySystemBackground)))
+        }
+        .padding(.bottom)
     }
     
     func addNewDrink(drink: drinkType, date: Date) {
@@ -237,3 +326,10 @@ struct PartyRunningView: View {
         }
     }
 }
+
+private let itemFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .none
+    formatter.timeStyle = .short
+    return formatter
+}()

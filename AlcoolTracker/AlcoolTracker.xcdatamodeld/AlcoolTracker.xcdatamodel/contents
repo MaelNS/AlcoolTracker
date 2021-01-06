@@ -4,6 +4,7 @@
         <attribute name="amountOl" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sensation" optional="YES" attributeType="String"/>
         <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Party" inverseName="drink" inverseEntity="Party"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
@@ -15,7 +16,7 @@
         <relationship name="drink" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drink" inverseName="party" inverseEntity="Drink"/>
     </entity>
     <elements>
-        <element name="Drink" positionX="-63" positionY="-9" width="128" height="89"/>
+        <element name="Drink" positionX="-63" positionY="-9" width="128" height="104"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
         <element name="Party" positionX="-54" positionY="0" width="128" height="74"/>
     </elements>

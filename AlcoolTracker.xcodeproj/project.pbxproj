@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A5C3FE525A63C2800640FE7 /* SensationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5C3FE425A63C2800640FE7 /* SensationModel.swift */; };
+		7A5C3FE825A63E1000640FE7 /* NewDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5C3FE725A63E1000640FE7 /* NewDrinkView.swift */; };
 		7A77F5FE25A378AE00AD6815 /* AlcoolTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77F5FD25A378AE00AD6815 /* AlcoolTrackerApp.swift */; };
 		7A77F60025A378AE00AD6815 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77F5FF25A378AE00AD6815 /* ContentView.swift */; };
 		7A77F60225A378AE00AD6815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A77F60125A378AE00AD6815 /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A5C3FE425A63C2800640FE7 /* SensationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensationModel.swift; sourceTree = "<group>"; };
+		7A5C3FE725A63E1000640FE7 /* NewDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDrinkView.swift; sourceTree = "<group>"; };
 		7A77F5FA25A378AE00AD6815 /* AlcoolTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlcoolTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A77F5FD25A378AE00AD6815 /* AlcoolTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoolTrackerApp.swift; sourceTree = "<group>"; };
 		7A77F5FF25A378AE00AD6815 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 				7A77F62125A39CD900AD6815 /* CurrentParty.swift */,
 				7AE8610825A4BAE7001AC3AF /* profilView.swift */,
 				7AE8610C25A4BC97001AC3AF /* ListPartyView.swift */,
+				7A5C3FE725A63E1000640FE7 /* NewDrinkView.swift */,
 				7AE8610F25A4BEF7001AC3AF /* DetailPartyView.swift */,
 			);
 			path = View;
@@ -102,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				7AE8610125A4B243001AC3AF /* DrinkModel.swift */,
+				7A5C3FE425A63C2800640FE7 /* SensationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 				7A77F62225A39CD900AD6815 /* CurrentParty.swift in Sources */,
 				7A77F60725A378AE00AD6815 /* Persistence.swift in Sources */,
 				7A77F60025A378AE00AD6815 /* ContentView.swift in Sources */,
+				7A5C3FE825A63E1000640FE7 /* NewDrinkView.swift in Sources */,
+				7A5C3FE525A63C2800640FE7 /* SensationModel.swift in Sources */,
 				7A77F5FE25A378AE00AD6815 /* AlcoolTrackerApp.swift in Sources */,
 				7AE8611025A4BEF7001AC3AF /* DetailPartyView.swift in Sources */,
 				7AE8610D25A4BC97001AC3AF /* ListPartyView.swift in Sources */,
