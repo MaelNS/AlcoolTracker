@@ -19,13 +19,23 @@ struct CurrentParty: View {
     @State var partyRunning: Bool = false
     @State var action: Int? = nil
     
+    init(allPartys: FetchedResults<Party>) {
+        if let lastParty = allPartys.last {
+            if lastParty.dateFin == nil {
+                partyRunning = true
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 if !partyRunning {
                     Button(action: {
                         newParty(date: Date())
-                        partyRunning = true
+                        withAnimation() {
+                            partyRunning = true
+                        }
                     }) {
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
                             .foregroundColor(Color(.secondarySystemBackground))
@@ -41,7 +51,7 @@ struct CurrentParty: View {
                     }
                 }
                 if partyRunning {
-                    PartyRunningView()
+                    PartyRunningView(partyRunning: self.$partyRunning)
                 }
                 NavigationLink(destination: ListPartyView(), tag: 1, selection: $action) { EmptyView() }
             }
@@ -52,7 +62,7 @@ struct CurrentParty: View {
                     Image(systemName: "person.crop.circle")
                 }
                 .sheet(isPresented: $showProfilView) {
-                    profilView()
+                    profilView(showProfilView: self.$showProfilView)
                 },
                 trailing:
                 Button(action: { action = 1 }) {
@@ -84,6 +94,8 @@ struct PartyRunningView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Party.date, ascending: true)],
         animation: .default)
     private var partys: FetchedResults<Party>
+    
+    @Binding var partyRunning: Bool
     
     let columns = [
         GridItem(.flexible()),
@@ -153,11 +165,17 @@ struct PartyRunningView: View {
             )
             .padding()
             
-            Button(action: { }) {
+            Button(action: {
+                endParty(date: Date())
+                withAnimation() {
+                    partyRunning = false
+                }
+            }) {
                 Text("Fin soirée")
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(Color(.secondarySystemBackground)))
             }
+            .padding(.bottom)
         }
     }
     
@@ -188,16 +206,34 @@ struct PartyRunningView: View {
     }
     
     func calcBloodAlcool() -> String {
+        let sex = UserDefaults.standard.string(forKey: "sex")
+        let weight = UserDefaults.standard.integer(forKey: "weight")
+        
+        var diffusion: Double = 0
+        if sex == "Femme" {
+            diffusion = 0.6
+        } else if sex == "Homme" {
+            diffusion = 0.7
+        }
+        
         var bloodAlcool: Double = 0
-        bloodAlcool = Double(calcAlcoolAmount()) / (0.7 * 57)
+        bloodAlcool = Double(calcAlcoolAmount()) / (diffusion * Double(weight) )
         
         let stringBloodAlcool = String(format: "%.1f", bloodAlcool)
         return stringBloodAlcool
     }
-}
-
-struct CurrentParty_Previews: PreviewProvider {
-    static var previews: some View {
-        CurrentParty()
+    
+    func endParty(date: Date) {
+        withAnimation {
+            let newParty = partys.last!
+            newParty.dateFin = date
+            
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
     }
 }

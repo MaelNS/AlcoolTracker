@@ -11,7 +11,12 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Party.date, ascending: true)],
+        animation: .default)
+    private var partys: FetchedResults<Party>
+
     var body: some View {
-        CurrentParty()
+        CurrentParty(allPartys: partys)
     }
 }
