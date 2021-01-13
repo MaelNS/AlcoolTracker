@@ -28,7 +28,7 @@
 		7A9269B825AF72050039F338 /* PartyRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9269B725AF72050039F338 /* PartyRunningView.swift */; };
 		7A9269BC25AF73910039F338 /* DrinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9269BB25AF73910039F338 /* DrinkController.swift */; };
 		7A9269C025AF77120039F338 /* PartyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9269BF25AF77120039F338 /* PartyController.swift */; };
-		7AE8610225A4B243001AC3AF /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610125A4B243001AC3AF /* DrinkModel.swift */; };
+		7AE8610225A4B243001AC3AF /* DrinkTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610125A4B243001AC3AF /* DrinkTypeModel.swift */; };
 		7AE8610925A4BAE7001AC3AF /* profilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610825A4BAE7001AC3AF /* profilView.swift */; };
 		7AE8610D25A4BC97001AC3AF /* ListPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610C25A4BC97001AC3AF /* ListPartyView.swift */; };
 		7AE8611025A4BEF7001AC3AF /* DetailPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610F25A4BEF7001AC3AF /* DetailPartyView.swift */; };
@@ -82,7 +82,7 @@
 		7A9269B725AF72050039F338 /* PartyRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyRunningView.swift; sourceTree = "<group>"; };
 		7A9269BB25AF73910039F338 /* DrinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkController.swift; sourceTree = "<group>"; };
 		7A9269BF25AF77120039F338 /* PartyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyController.swift; sourceTree = "<group>"; };
-		7AE8610125A4B243001AC3AF /* DrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkModel.swift; sourceTree = "<group>"; };
+		7AE8610125A4B243001AC3AF /* DrinkTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTypeModel.swift; sourceTree = "<group>"; };
 		7AE8610825A4BAE7001AC3AF /* profilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilView.swift; sourceTree = "<group>"; };
 		7AE8610C25A4BC97001AC3AF /* ListPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPartyView.swift; sourceTree = "<group>"; };
 		7AE8610F25A4BEF7001AC3AF /* DetailPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPartyView.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		7AE8610425A4B248001AC3AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7AE8610125A4B243001AC3AF /* DrinkModel.swift */,
+				7AE8610125A4B243001AC3AF /* DrinkTypeModel.swift */,
 				7A5C3FE425A63C2800640FE7 /* SensationModel.swift */,
 				7A9269AF25AF561F0039F338 /* PartyModel.swift */,
 			);
@@ -305,7 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AE8610225A4B243001AC3AF /* DrinkModel.swift in Sources */,
+				7AE8610225A4B243001AC3AF /* DrinkTypeModel.swift in Sources */,
 				7A92699425AF1E920039F338 /* FirstWidget.intentdefinition in Sources */,
 				7A9269B825AF72050039F338 /* PartyRunningView.swift in Sources */,
 				7A77F60A25A378AE00AD6815 /* AlcoolTracker.xcdatamodeld in Sources */,
