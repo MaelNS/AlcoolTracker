@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct ListPartyView: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Party.date, ascending: false)],
-        animation: .default)
+    @FetchRequest(fetchRequest: Party.allPartys)
     private var partys: FetchedResults<Party>
     
     var body: some View {
         List {
             ForEach(partys) { party in
                 NavigationLink(destination: DetailPartyView(date: party.date!)) {
-                    Text("\(party.date ?? Date())")
+                    VStack {
+                        Text("\(party.date ?? Date())")
+                    }
                 }
             }
             .onDelete(perform: deleteParty)
@@ -27,7 +27,7 @@ struct ListPartyView: View {
         .navigationTitle("Liste")
     }
     
-    func deleteParty(offsets: IndexSet) {
+    private func deleteParty(offsets: IndexSet) {
         withAnimation {
             offsets.map { partys[$0] }.forEach(viewContext.delete)
 

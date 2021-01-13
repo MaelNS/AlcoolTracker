@@ -8,20 +8,13 @@
 import SwiftUI
 
 struct NewDrinkView: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Party.date, ascending: true)],
-        animation: .default)
-    private var partys: FetchedResults<Party>
-    
+    @State var tagSelection: String = ""
     @Binding var showNewDrinkView: Bool
     @Binding var selectedDrink: drinkType?
-//    var drink: drinkType
-    
+    var currentParty: Party
     var sensation: sensationType? = nil
-    @State var tagSelection: String = ""
-    
     var column: [GridItem] = [GridItem(), GridItem()]
     
     var body: some View {
@@ -101,7 +94,7 @@ struct NewDrinkView: View {
             
             Button(action: {
                 if tagSelection != "" {
-                    addNewDrink(drink: selectedDrink!, date: Date(), sensation: tagSelection)
+                    addDrink(drink: selectedDrink!, date: Date(), party: currentParty, sensation: tagSelection, using: viewContext)
                     showNewDrinkView = false
                 }
             }) {
@@ -112,26 +105,7 @@ struct NewDrinkView: View {
                             .foregroundColor(Color(.secondarySystemBackground))
                     )
             }
-            
-            Spacer()
-        }
-    }
-    
-    func addNewDrink(drink: drinkType, date: Date, sensation: String) {
-        withAnimation {
-            let newDrink = Drink(context: viewContext)
-            newDrink.amountOl = Int32(drink.amountOl)
-            newDrink.date = date
-            newDrink.name = drink.name
-            newDrink.sensation = sensation
-            newDrink.party = partys.last
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            .padding(.bottom)
         }
     }
 }
@@ -161,7 +135,7 @@ struct ButtonView: View {
         }
     }
     
-    func isSelected(tagSelection: String, sensation: sensationType) -> Bool {
+    private func isSelected(tagSelection: String, sensation: sensationType) -> Bool {
         var isSelected = false
         if tagSelection == sensation.name {
             isSelected = true

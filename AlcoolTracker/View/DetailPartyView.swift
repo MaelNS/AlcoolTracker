@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct DetailPartyView: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
-    
     var drinks: FetchRequest<Drink>
-    
     var date: Date
     
     init(date: Date) {
@@ -33,7 +32,7 @@ struct DetailPartyView: View {
         .navigationTitle("\(date)")
     }
     
-    func deleteDrink(offsets: IndexSet) {
+    private func deleteDrink(offsets: IndexSet) {
         withAnimation {
             offsets.map { drinks.wrappedValue[$0] }.forEach(viewContext.delete)
 

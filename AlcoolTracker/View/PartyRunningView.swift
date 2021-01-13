@@ -1,111 +1,20 @@
 //
-//  CurrentParty.swift
+//  PartyRunningView.swift
 //  AlcoolTracker
 //
-//  Created by Maël Navarro Salcedo on 04/01/2021.
+//  Created by Maël Navarro Salcedo on 13/01/2021.
 //
 
 import SwiftUI
 
-struct CurrentParty: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Party.date, ascending: true)],
-        animation: .default)
-    private var partys: FetchedResults<Party>
-    
-    @State var showProfilView: Bool = false
-    @State var partyRunning: Bool = false
-    @State var action: Int? = nil
-    
-    init(allPartys: FetchedResults<Party>) {
-        if let lastParty = allPartys.last {
-            if lastParty.dateFin == nil {
-                _partyRunning = State<Bool>(initialValue: true)
-            }
-        }
-    }
-    
-    var body: some View {
-        NavigationView {
-            ScrollView {
-                if !partyRunning {
-                    Button(action: {
-                        newParty(date: Date())
-                        withAnimation() {
-                            partyRunning = true
-                        }
-                    }) {
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .foregroundColor(Color(.secondarySystemBackground))
-                            .frame(height: 60)
-                            .overlay(
-                                HStack {
-                                    Text("Nouvelle soirée")
-                                        .font(.system(.body, design: .rounded))
-                                    Spacer()
-                                }
-                                .padding()
-                            )
-                            .padding()
-                    }
-                }
-                if partyRunning {
-                    PartyRunningView(partyRunning: self.$partyRunning)
-                }
-                NavigationLink(destination: ListPartyView(), tag: 1, selection: $action) { EmptyView() }
-            }
-            .navigationTitle("Soirée")
-            .navigationBarItems(
-                leading:
-                Button(action: { showProfilView = true }) {
-                    Image(systemName: "person.crop.circle")
-                }
-                .sheet(isPresented: $showProfilView) {
-                    profilView(showProfilView: self.$showProfilView)
-                },
-                trailing:
-                Button(action: { action = 1 }) {
-                    Text("Liste")
-                        .font(.system(.body, design: .rounded))
-                }
-            )
-        }
-    }
-    
-    func newParty(date: Date) {
-        withAnimation {
-            let newParty = Party(context: viewContext)
-            newParty.date = date
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-}
-
 struct PartyRunningView: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Party.date, ascending: true)],
-        animation: .default)
-    private var partys: FetchedResults<Party>
-    
-    @Binding var partyRunning: Bool
     @State var selectedDrink: drinkType? = nil
-    
     @State var showNewDrinkView: Bool = false
-    
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    @Binding var partyRunning: Bool
+    var currentParty: Party
+    let columns = [ GridItem(.flexible()), GridItem(.flexible()) ]
     
     var body: some View {
         VStack {
@@ -129,7 +38,7 @@ struct PartyRunningView: View {
                 }
                 .padding(.bottom, 8)
                 HStack {
-                    Text("\(partys.last!.drink!.count)")
+                    Text("\(currentParty.drink!.count)")
                         .font(.system(.title2, design: .rounded))
                         .fontWeight(.bold)
                     Text("verres bus")
@@ -139,7 +48,7 @@ struct PartyRunningView: View {
                     Spacer()
                 }
                 HStack {
-                    Text("\(calcAlcoolAmount())")
+                    Text("\(getAlcoolAmount(party: currentParty))")
                         .font(.system(.title2, design: .rounded))
                         .fontWeight(.bold)
                     Text("g d'alcool pur ingéré")
@@ -167,7 +76,7 @@ struct PartyRunningView: View {
                 }
                 .padding(.bottom, 8)
                 HStack {
-                    Text("\(calcBloodAlcool())")
+                    Text("\(getBloodAlcool(party: currentParty))")
                         .font(.system(.title2, design: .rounded))
                         .fontWeight(.bold)
                     Text("g/L")
@@ -197,7 +106,7 @@ struct PartyRunningView: View {
                 .padding(.horizontal)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(partys.last!.drink!.allObjects as! [Drink]) { drink in
+                        ForEach(currentParty.drink!.allObjects as! [Drink]) { drink in
                             VStack {
                                 Text(sensationConvert[drink.sensation!]!)
                                 Text(drink.sensation!)
@@ -229,7 +138,6 @@ struct PartyRunningView: View {
             HStack {
                 ForEach(drinks, id: \.id) { drink in
                     Button(action: {
-//                        addNewDrink(drink: drink, date: Date())
                         showNewDrinkView = true
                         selectedDrink = drink
                     }) {
@@ -248,7 +156,7 @@ struct PartyRunningView: View {
                         .foregroundColor(Color(.secondarySystemBackground)))
                     }
                     .sheet(isPresented: $showNewDrinkView) {
-                        NewDrinkView(showNewDrinkView: self.$showNewDrinkView, selectedDrink: self.$selectedDrink)
+                        NewDrinkView(showNewDrinkView: self.$showNewDrinkView, selectedDrink: self.$selectedDrink, currentParty: currentParty).environment(\.managedObjectContext, self.viewContext)
                     }
                 }
             }
@@ -256,10 +164,10 @@ struct PartyRunningView: View {
         }
         
         Button(action: {
-            endParty(date: Date())
             withAnimation() {
                 partyRunning = false
             }
+            endParty(date: Date(), party: currentParty, using: viewContext)
         }) {
             Text("Fin soirée")
                 .padding()
@@ -267,69 +175,5 @@ struct PartyRunningView: View {
         }
         .padding(.bottom)
     }
-    
-    func addNewDrink(drink: drinkType, date: Date) {
-        withAnimation {
-            let newDrink = Drink(context: viewContext)
-            newDrink.amountOl = Int32(drink.amountOl)
-            newDrink.date = date
-            newDrink.name = drink.name
-            newDrink.party = partys.last
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-    
-    func calcAlcoolAmount() -> Int {
-        var totalAmount = 0
-        for drink in partys.last!.drink!.allObjects as! [Drink] {
-            totalAmount += Int(drink.amountOl)
-        }
-        
-        return totalAmount
-    }
-    
-    func calcBloodAlcool() -> String {
-        let sex = UserDefaults.standard.string(forKey: "sex")
-        let weight = UserDefaults.standard.integer(forKey: "weight")
-        
-        var diffusion: Double = 0
-        if sex == "Femme" {
-            diffusion = 0.6
-        } else if sex == "Homme" {
-            diffusion = 0.7
-        }
-        
-        var bloodAlcool: Double = 0
-        bloodAlcool = Double(calcAlcoolAmount()) / (diffusion * Double(weight) )
-        
-        let stringBloodAlcool = String(format: "%.1f", bloodAlcool)
-        return stringBloodAlcool
-    }
-    
-    func endParty(date: Date) {
-        withAnimation {
-            let newParty = partys.last!
-            newParty.dateFin = date
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .none
-    formatter.timeStyle = .short
-    return formatter
-}()

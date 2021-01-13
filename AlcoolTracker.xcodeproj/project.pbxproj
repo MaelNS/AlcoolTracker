@@ -15,12 +15,48 @@
 		7A77F60525A378AE00AD6815 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A77F60425A378AE00AD6815 /* Preview Assets.xcassets */; };
 		7A77F60725A378AE00AD6815 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77F60625A378AE00AD6815 /* Persistence.swift */; };
 		7A77F60A25A378AE00AD6815 /* AlcoolTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A77F60825A378AE00AD6815 /* AlcoolTracker.xcdatamodeld */; };
-		7A77F62225A39CD900AD6815 /* CurrentParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77F62125A39CD900AD6815 /* CurrentParty.swift */; };
+		7A77F62225A39CD900AD6815 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77F62125A39CD900AD6815 /* HomeView.swift */; };
+		7A92698925AF1E910039F338 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A92698825AF1E910039F338 /* WidgetKit.framework */; };
+		7A92698B25AF1E910039F338 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A92698A25AF1E910039F338 /* SwiftUI.framework */; };
+		7A92698E25AF1E910039F338 /* FirstWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92698D25AF1E910039F338 /* FirstWidget.swift */; };
+		7A92699125AF1E920039F338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A92699025AF1E920039F338 /* Assets.xcassets */; };
+		7A92699325AF1E920039F338 /* FirstWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A92698F25AF1E920039F338 /* FirstWidget.intentdefinition */; };
+		7A92699425AF1E920039F338 /* FirstWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A92698F25AF1E920039F338 /* FirstWidget.intentdefinition */; };
+		7A92699725AF1E920039F338 /* FirstWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A92698625AF1E910039F338 /* FirstWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A9269AA25AF386F0039F338 /* AlcoolMaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9269A925AF386F0039F338 /* AlcoolMaths.swift */; };
+		7A9269B025AF561F0039F338 /* PartyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9269AF25AF561F0039F338 /* PartyModel.swift */; };
+		7A9269B825AF72050039F338 /* PartyRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9269B725AF72050039F338 /* PartyRunningView.swift */; };
+		7A9269BC25AF73910039F338 /* DrinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9269BB25AF73910039F338 /* DrinkController.swift */; };
+		7A9269C025AF77120039F338 /* PartyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9269BF25AF77120039F338 /* PartyController.swift */; };
 		7AE8610225A4B243001AC3AF /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610125A4B243001AC3AF /* DrinkModel.swift */; };
 		7AE8610925A4BAE7001AC3AF /* profilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610825A4BAE7001AC3AF /* profilView.swift */; };
 		7AE8610D25A4BC97001AC3AF /* ListPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610C25A4BC97001AC3AF /* ListPartyView.swift */; };
 		7AE8611025A4BEF7001AC3AF /* DetailPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8610F25A4BEF7001AC3AF /* DetailPartyView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A92699525AF1E920039F338 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A77F5F225A378AE00AD6815 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A92698525AF1E910039F338;
+			remoteInfo = FirstWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7A92699825AF1E920039F338 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7A92699725AF1E920039F338 /* FirstWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7A5C3FE425A63C2800640FE7 /* SensationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensationModel.swift; sourceTree = "<group>"; };
@@ -33,7 +69,19 @@
 		7A77F60625A378AE00AD6815 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		7A77F60925A378AE00AD6815 /* AlcoolTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlcoolTracker.xcdatamodel; sourceTree = "<group>"; };
 		7A77F60B25A378AE00AD6815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A77F62125A39CD900AD6815 /* CurrentParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentParty.swift; sourceTree = "<group>"; };
+		7A77F62125A39CD900AD6815 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		7A92698625AF1E910039F338 /* FirstWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FirstWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A92698825AF1E910039F338 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7A92698A25AF1E910039F338 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7A92698D25AF1E910039F338 /* FirstWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWidget.swift; sourceTree = "<group>"; };
+		7A92698F25AF1E920039F338 /* FirstWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = FirstWidget.intentdefinition; sourceTree = "<group>"; };
+		7A92699025AF1E920039F338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A92699225AF1E920039F338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9269A925AF386F0039F338 /* AlcoolMaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoolMaths.swift; sourceTree = "<group>"; };
+		7A9269AF25AF561F0039F338 /* PartyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyModel.swift; sourceTree = "<group>"; };
+		7A9269B725AF72050039F338 /* PartyRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyRunningView.swift; sourceTree = "<group>"; };
+		7A9269BB25AF73910039F338 /* DrinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkController.swift; sourceTree = "<group>"; };
+		7A9269BF25AF77120039F338 /* PartyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyController.swift; sourceTree = "<group>"; };
 		7AE8610125A4B243001AC3AF /* DrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkModel.swift; sourceTree = "<group>"; };
 		7AE8610825A4BAE7001AC3AF /* profilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilView.swift; sourceTree = "<group>"; };
 		7AE8610C25A4BC97001AC3AF /* ListPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPartyView.swift; sourceTree = "<group>"; };
@@ -48,6 +96,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A92698325AF1E910039F338 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A92698B25AF1E910039F338 /* SwiftUI.framework in Frameworks */,
+				7A92698925AF1E910039F338 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				7A77F5FC25A378AE00AD6815 /* AlcoolTracker */,
+				7A92698C25AF1E910039F338 /* FirstWidget */,
+				7A92698725AF1E910039F338 /* Frameworks */,
 				7A77F5FB25A378AE00AD6815 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				7A77F5FA25A378AE00AD6815 /* AlcoolTracker.app */,
+				7A92698625AF1E910039F338 /* FirstWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,11 +130,12 @@
 		7A77F5FC25A378AE00AD6815 /* AlcoolTracker */ = {
 			isa = PBXGroup;
 			children = (
-				7A77F5FD25A378AE00AD6815 /* AlcoolTrackerApp.swift */,
 				7A77F61225A3808300AD6815 /* View */,
 				7AE8610425A4B248001AC3AF /* Model */,
-				7A77F60125A378AE00AD6815 /* Assets.xcassets */,
+				7A92699F25AF38120039F338 /* Controller */,
+				7A77F5FD25A378AE00AD6815 /* AlcoolTrackerApp.swift */,
 				7A77F60625A378AE00AD6815 /* Persistence.swift */,
+				7A77F60125A378AE00AD6815 /* Assets.xcassets */,
 				7A77F60B25A378AE00AD6815 /* Info.plist */,
 				7A77F60825A378AE00AD6815 /* AlcoolTracker.xcdatamodeld */,
 				7A77F60325A378AE00AD6815 /* Preview Content */,
@@ -94,7 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				7A77F5FF25A378AE00AD6815 /* ContentView.swift */,
-				7A77F62125A39CD900AD6815 /* CurrentParty.swift */,
+				7A77F62125A39CD900AD6815 /* HomeView.swift */,
+				7A9269B725AF72050039F338 /* PartyRunningView.swift */,
 				7AE8610825A4BAE7001AC3AF /* profilView.swift */,
 				7AE8610C25A4BC97001AC3AF /* ListPartyView.swift */,
 				7A5C3FE725A63E1000640FE7 /* NewDrinkView.swift */,
@@ -103,11 +165,42 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7A92698725AF1E910039F338 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A92698825AF1E910039F338 /* WidgetKit.framework */,
+				7A92698A25AF1E910039F338 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A92698C25AF1E910039F338 /* FirstWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7A92698D25AF1E910039F338 /* FirstWidget.swift */,
+				7A92698F25AF1E920039F338 /* FirstWidget.intentdefinition */,
+				7A92699025AF1E920039F338 /* Assets.xcassets */,
+				7A92699225AF1E920039F338 /* Info.plist */,
+			);
+			path = FirstWidget;
+			sourceTree = "<group>";
+		};
+		7A92699F25AF38120039F338 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7A9269A925AF386F0039F338 /* AlcoolMaths.swift */,
+				7A9269BB25AF73910039F338 /* DrinkController.swift */,
+				7A9269BF25AF77120039F338 /* PartyController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		7AE8610425A4B248001AC3AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				7AE8610125A4B243001AC3AF /* DrinkModel.swift */,
 				7A5C3FE425A63C2800640FE7 /* SensationModel.swift */,
+				7A9269AF25AF561F0039F338 /* PartyModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -122,15 +215,34 @@
 				7A77F5F625A378AE00AD6815 /* Sources */,
 				7A77F5F725A378AE00AD6815 /* Frameworks */,
 				7A77F5F825A378AE00AD6815 /* Resources */,
+				7A92699825AF1E920039F338 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7A92699625AF1E920039F338 /* PBXTargetDependency */,
 			);
 			name = AlcoolTracker;
 			productName = AlcoolTracker;
 			productReference = 7A77F5FA25A378AE00AD6815 /* AlcoolTracker.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7A92698525AF1E910039F338 /* FirstWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A92699B25AF1E920039F338 /* Build configuration list for PBXNativeTarget "FirstWidgetExtension" */;
+			buildPhases = (
+				7A92698225AF1E910039F338 /* Sources */,
+				7A92698325AF1E910039F338 /* Frameworks */,
+				7A92698425AF1E910039F338 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FirstWidgetExtension;
+			productName = FirstWidgetExtension;
+			productReference = 7A92698625AF1E910039F338 /* FirstWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -142,6 +254,9 @@
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					7A77F5F925A378AE00AD6815 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					7A92698525AF1E910039F338 = {
 						CreatedOnToolsVersion = 12.3;
 					};
 				};
@@ -160,6 +275,7 @@
 			projectRoot = "";
 			targets = (
 				7A77F5F925A378AE00AD6815 /* AlcoolTracker */,
+				7A92698525AF1E910039F338 /* FirstWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -174,6 +290,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A92698425AF1E910039F338 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A92699125AF1E920039F338 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -182,20 +306,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AE8610225A4B243001AC3AF /* DrinkModel.swift in Sources */,
+				7A92699425AF1E920039F338 /* FirstWidget.intentdefinition in Sources */,
+				7A9269B825AF72050039F338 /* PartyRunningView.swift in Sources */,
 				7A77F60A25A378AE00AD6815 /* AlcoolTracker.xcdatamodeld in Sources */,
 				7AE8610925A4BAE7001AC3AF /* profilView.swift in Sources */,
-				7A77F62225A39CD900AD6815 /* CurrentParty.swift in Sources */,
+				7A9269C025AF77120039F338 /* PartyController.swift in Sources */,
+				7A77F62225A39CD900AD6815 /* HomeView.swift in Sources */,
 				7A77F60725A378AE00AD6815 /* Persistence.swift in Sources */,
+				7A9269AA25AF386F0039F338 /* AlcoolMaths.swift in Sources */,
 				7A77F60025A378AE00AD6815 /* ContentView.swift in Sources */,
+				7A9269B025AF561F0039F338 /* PartyModel.swift in Sources */,
 				7A5C3FE825A63E1000640FE7 /* NewDrinkView.swift in Sources */,
 				7A5C3FE525A63C2800640FE7 /* SensationModel.swift in Sources */,
+				7A9269BC25AF73910039F338 /* DrinkController.swift in Sources */,
 				7A77F5FE25A378AE00AD6815 /* AlcoolTrackerApp.swift in Sources */,
 				7AE8611025A4BEF7001AC3AF /* DetailPartyView.swift in Sources */,
 				7AE8610D25A4BC97001AC3AF /* ListPartyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A92698225AF1E910039F338 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A92698E25AF1E910039F338 /* FirstWidget.swift in Sources */,
+				7A92699325AF1E920039F338 /* FirstWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A92699625AF1E920039F338 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A92698525AF1E910039F338 /* FirstWidgetExtension */;
+			targetProxy = 7A92699525AF1E920039F338 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7A77F60C25A378AE00AD6815 /* Debug */ = {
@@ -317,6 +464,7 @@
 		7A77F60F25A378AE00AD6815 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -339,6 +487,7 @@
 		7A77F61025A378AE00AD6815 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -353,6 +502,48 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.maelnavarro.AlcoolTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7A92699925AF1E920039F338 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 737PG37CBT;
+				INFOPLIST_FILE = FirstWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.maelnavarro.AlcoolTracker.FirstWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A92699A25AF1E920039F338 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 737PG37CBT;
+				INFOPLIST_FILE = FirstWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.maelnavarro.AlcoolTracker.FirstWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -375,6 +566,15 @@
 			buildConfigurations = (
 				7A77F60F25A378AE00AD6815 /* Debug */,
 				7A77F61025A378AE00AD6815 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A92699B25AF1E920039F338 /* Build configuration list for PBXNativeTarget "FirstWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A92699925AF1E920039F338 /* Debug */,
+				7A92699A25AF1E920039F338 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

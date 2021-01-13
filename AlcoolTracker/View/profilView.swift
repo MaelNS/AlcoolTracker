@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct profilView: View {
+    
     @State var toggleSex = true
     @State var weight = 65
     @Binding var showProfilView: Bool
