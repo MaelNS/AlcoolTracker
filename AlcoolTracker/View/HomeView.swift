@@ -60,7 +60,7 @@ struct HomeView: View {
                     Image(systemName: "person.crop.circle")
                 }
                 .sheet(isPresented: $showProfilView) {
-                    profilView(showProfilView: self.$showProfilView)
+                    ProfilView(showProfilView: self.$showProfilView)
                 },
                 trailing:
                 Button(action: { action = 1 }) {

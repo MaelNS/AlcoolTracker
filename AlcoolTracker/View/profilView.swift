@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct profilView: View {
+struct ProfilView: View {
     
     @State var toggleSex = true
     @State var weight = 65
